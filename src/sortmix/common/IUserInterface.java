@@ -1,19 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sortmix.common;
 
-import sortmix.model.InputValues;
+import sortmix.program.InputData;
 
 /**
  *
- * @author dariu
+ * @author Dariusz Opitek
+ * @version 1.0
  */
 public interface IUserInterface {
-    InputValues getInput(InputValues values);
-    void present(String value);    
-    void error(String value);
+
+    /**
+     * Gets missing data from the user interface to process data
+     *
+     * @param data actual data parsed from args array
+     * @return returns missing data get from user
+     */
+    InputData getInput(InputData data);
+
+    /**
+     * Puts text to the user interface
+     *
+     * @param text text to be displayed
+     */
+    void present(String text);
+
+    /**
+     * Puts errors to the user interface
+     *
+     * @param message message to be displayed
+     */
+    void error(String message);
 
 }

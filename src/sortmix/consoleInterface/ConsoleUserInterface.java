@@ -1,38 +1,36 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sortmix.consoleInterface;
 
+import java.util.Locale;
 import sortmix.common.IUserInterface;
 import java.util.Scanner;
 import sortmix.common.SortingMode;
-import sortmix.model.InputValues;
+import sortmix.program.InputData;
 
 /**
  *
- * @author dariu
+ * @author Dariusz Opitek
+ * @version 1.0
  */
 public class ConsoleUserInterface implements IUserInterface {
 
     @Override
-    public InputValues getInput(InputValues values) {
+    public InputData getInput(InputData values) {
 
         while (true) {
-            if (!values.getFileName().equals("") && values.getSortingMode() != SortingMode.None) 
+            if (!values.getFileName().equals("") && values.getSortingMode() != SortingMode.None) {
                 break;
-            
+            }
+
             if (values.getFileName().equals("")) {
-                Scanner scanner = new Scanner(System.in);
+                Scanner scanner = new Scanner(System.in, "UTF-8");
                 System.out.print("Enter filename: ");
                 values.setFileName(scanner.next());
             }
 
             if (values.getSortingMode() == SortingMode.None) {
-                Scanner scanner = new Scanner(System.in);
+                Scanner scanner = new Scanner(System.in, "UTF-8");
                 System.out.print("Enter arrange mode s for sort, m for mix: ");
-                String arrangeString = scanner.next().toLowerCase();
+                String arrangeString = scanner.next().toLowerCase(Locale.ENGLISH);
                 if (arrangeString.equals("s")) {
                     values.setSortingMode(SortingMode.Sort);
                 }

@@ -1,21 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sortmix.exceptions;
 
 /**
  *
- * @author Student
+ * @author Dariusz Opitek
+ * @version 1.0
  */
 public class ErrorReadingFileException extends Exception {
 
+    /**
+     * Empty constructor
+     */
     public ErrorReadingFileException() {
     }
 
     /**
-     * Constructor
+     * Constructor with message
      *
      * @param message display message
      */

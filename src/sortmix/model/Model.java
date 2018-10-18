@@ -1,29 +1,40 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sortmix.model;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import sortmix.common.SortingMode;
 import sortmix.exceptions.ErrorReadingFileException;
+import sortmix.exceptions.NonSortingModeException;
 
 /**
  *
- * @author dariu
+ * @author Dariusz Opitek
+ * @version 1.0
  */
 public class Model {
 
     private final String fileName;
 
+    /**
+     * Default constructor
+     *
+     * @param fileName File name of file to be read
+     */
     public Model(String fileName) {
         this.fileName = fileName;
     }
 
-    public String getInputString() throws ErrorReadingFileException {
+    /**
+     * Reads all text from file
+     *
+     * @return returns text get from file
+     * @throws ErrorReadingFileException throws custom exception caught while
+     * processing file
+     *
+     */
+    private String getInputString() throws ErrorReadingFileException {
 
         try {
             FileReader fileReader = new FileReader(this.fileName);
@@ -42,17 +53,54 @@ public class Model {
         }
     }
 
-    public String getSortedString() throws ErrorReadingFileException {
+    /**
+     * Gets sorted text retrieved from file
+     *
+     * @return returns sorted text
+     * @throws ErrorReadingFileException throws custom exception caught while
+     * processing file
+     */
+    private String getSortedString() throws ErrorReadingFileException {
 
         String text = getInputString();
-       
+
         return text;
     }
 
-    public String getMixedString() throws ErrorReadingFileException{
+    /**
+     * Gets mixed text retrieved from file
+     *
+     * @return returns mixed text
+     * @throws ErrorReadingFileException throws custom exception caught while
+     * processing file
+     */
+    private String getMixedString() throws ErrorReadingFileException {
 
         String text = getInputString();
-       
+
+        return text;
+    }
+
+     /**
+     * Gets text arranged in the specified sorting mode
+     *
+     * @param sortingMode sorting mode used to arrange text
+     * @return returns arranged text
+     * @throws ErrorReadingFileException throws custom exception caught while processing file     
+     * @throws NonSortingModeException throws custom exception caught when sorting mode not supported
+     */
+    public String getResultText(SortingMode sortingMode) throws ErrorReadingFileException, NonSortingModeException {
+        String text;
+        switch (sortingMode) {
+            case Sort:
+                text = getSortedString();
+                break;
+            case Mix:
+                text = getMixedString();
+                break;
+            default:
+                throw new NonSortingModeException("Sorting mode not supported: " + sortingMode.name());
+        }
         return text;
     }
 }
