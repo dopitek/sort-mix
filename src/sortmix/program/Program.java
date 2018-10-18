@@ -15,10 +15,15 @@ import sortmix.model.Model;
 public class Program {
 
     /**
+     * Main method of the application
+     * Arguments should contain following arguments:
+     * -i %filename% - for text file
+     * -s or -m - for sort or mix
+     * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
+        
         InputData inputValues = new ArgsParser().parse(args);
 
         IUserInterface userInterface = new ConsoleUserInterface();

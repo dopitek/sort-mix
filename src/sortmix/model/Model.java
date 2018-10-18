@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Random;
 import sortmix.common.SortingMode;
 import sortmix.exceptions.ErrorReadingFileException;
 import sortmix.exceptions.NonSortingModeException;
@@ -46,11 +47,11 @@ public class Model {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
             String line;
-            String text = "";
+            StringBuilder text = new StringBuilder();
             while ((line = bufferedReader.readLine()) != null) {
-                text += line;
+                text.append(line);
             }
-            return text;
+            return text.toString();
         } catch (FileNotFoundException ex) {
             throw new ErrorReadingFileException("Can't open file " + this.fileName + " " + ex.getMessage());
         } catch (IOException ex) {
@@ -93,9 +94,21 @@ public class Model {
      */
     private String getMixedString() throws ErrorReadingFileException {
 
-        String text = getInputString();
+        String input = getInputString();
+        StringBuilder text = new StringBuilder(input);
 
-        return text;
+        Random rand = new Random();
+        int a, b;
+        
+        for (int i = 0; i < text.length(); i++) {
+            a = rand.nextInt(text.length());            
+            b = rand.nextInt(text.length());
+            char t = text.charAt(a);
+            text.setCharAt(a, text.charAt(b));
+            text.setCharAt(b, t);
+        }
+
+        return text.toString();
     }
 
     /**
