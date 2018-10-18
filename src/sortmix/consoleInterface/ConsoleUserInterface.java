@@ -7,7 +7,8 @@ import sortmix.common.SortingMode;
 import sortmix.program.InputData;
 
 /**
- *
+ * Command line user interface to retrieve data
+ * 
  * @author Dariusz Opitek
  * @version 1.0
  */

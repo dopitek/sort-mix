@@ -3,7 +3,8 @@ package sortmix.program;
 import sortmix.common.SortingMode;
 
 /**
- *
+ * Class used to process values from command line args
+ * 
  * @author Dariusz Opitek
  * @version 1.0
  */
@@ -15,7 +16,7 @@ public class ArgsParser {
      * @param args command line args
      * @return return parsed input data
      */
-    public InputData parse(String[] args) {
+    protected InputData parse(String[] args) {
         InputData values = new InputData();
 
         for (int i = 0; i < args.length; i++) {

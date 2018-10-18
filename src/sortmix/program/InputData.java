@@ -3,12 +3,16 @@ package sortmix.program;
 import sortmix.common.SortingMode;
 
 /**
- *
+ * Class used to store input vales get from user
+ * 
  * @author Dariusz Opitek
  * @version 1.0
  */
 public class InputData {
 
+     /**
+     * fileName stores file name
+     */
     private String fileName;
 
     /**
@@ -28,7 +32,10 @@ public class InputData {
     public String getFileName() {
         return this.fileName;
     }
-
+    
+    /**
+     * sortingMode stores selected sorting mode
+     */
     private SortingMode sortingMode;
 
     /**

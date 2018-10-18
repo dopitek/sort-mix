@@ -9,12 +9,17 @@ import sortmix.exceptions.ErrorReadingFileException;
 import sortmix.exceptions.NonSortingModeException;
 
 /**
+ * Main model of the application. Reads file content and arranges text in
+ * specified mode.
  *
  * @author Dariusz Opitek
  * @version 1.0
  */
 public class Model {
 
+    /**
+     * fileName stores file name
+     */
     private final String fileName;
 
     /**
@@ -62,9 +67,21 @@ public class Model {
      */
     private String getSortedString() throws ErrorReadingFileException {
 
-        String text = getInputString();
+        String input = getInputString();
+        input = input.replaceAll("\\s+", "");
+        StringBuilder text = new StringBuilder(input);
 
-        return text;
+        for (int i = 0; i < text.length(); i++) {
+            for (int j = i + 1; j < text.length(); j++) {
+                if (text.charAt(j) < text.charAt(i)) {
+                    char t = text.charAt(j);
+                    text.setCharAt(j, text.charAt(i));
+                    text.setCharAt(i, t);
+                }
+            }
+        }
+
+        return text.toString();
     }
 
     /**
@@ -81,13 +98,15 @@ public class Model {
         return text;
     }
 
-     /**
+    /**
      * Gets text arranged in the specified sorting mode
      *
      * @param sortingMode sorting mode used to arrange text
      * @return returns arranged text
-     * @throws ErrorReadingFileException throws custom exception caught while processing file     
-     * @throws NonSortingModeException throws custom exception caught when sorting mode not supported
+     * @throws ErrorReadingFileException throws custom exception caught while
+     * processing file
+     * @throws NonSortingModeException throws custom exception caught when
+     * sorting mode not supported
      */
     public String getResultText(SortingMode sortingMode) throws ErrorReadingFileException, NonSortingModeException {
         String text;

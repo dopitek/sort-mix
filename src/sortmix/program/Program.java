@@ -7,7 +7,8 @@ import sortmix.exceptions.ErrorReadingFileException;
 import sortmix.model.Model;
 
 /**
- *
+ * Main class of the application which sorts or mixes content of given file. Result is presented to the user interface.
+ * 
  * @author Dariusz Opitek
  * @version 1.0
  */

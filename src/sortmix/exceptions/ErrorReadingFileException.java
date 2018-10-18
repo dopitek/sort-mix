@@ -1,7 +1,8 @@
 package sortmix.exceptions;
 
 /**
- *
+ * Exception class which is thrown when no cannot read the file
+ * 
  * @author Dariusz Opitek
  * @version 1.0
  */

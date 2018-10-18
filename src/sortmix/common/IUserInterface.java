@@ -3,7 +3,8 @@ package sortmix.common;
 import sortmix.program.InputData;
 
 /**
- *
+ * Interface for getting and presenting data from/to the user
+ * 
  * @author Dariusz Opitek
  * @version 1.0
  */
