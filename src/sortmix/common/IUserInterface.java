@@ -4,17 +4,17 @@ import sortmix.program.InputData;
 
 /**
  * Interface for getting and presenting data from/to the user
- * 
+ *
  * @author Dariusz Opitek
  * @version 1.0
  */
 public interface IUserInterface {
 
     /**
-     * Gets missing data from the user interface to process data
+     * Gets data from the user interface to process data
      *
      * @param data actual data parsed from args array
-     * @return returns missing data get from user
+     * @return returns data get from user
      */
     InputData getInput(InputData data);
 

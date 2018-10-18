@@ -4,7 +4,7 @@ import sortmix.common.SortingMode;
 
 /**
  * Class used to process values from command line args
- * 
+ *
  * @author Dariusz Opitek
  * @version 1.0
  */

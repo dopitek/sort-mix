@@ -1,8 +1,8 @@
 package sortmix.exceptions;
 
 /**
- * Exception class which is thrown when no supported mode is selected
- * 
+ * Exception class which is thrown when no supported sorting mode is selected
+ *
  * @author Dariusz Opitek
  * @version 1.0
  */
