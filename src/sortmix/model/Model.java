@@ -5,45 +5,54 @@
  */
 package sortmix.model;
 
-import sortmix.exceptions.FileNotFoundException;
-import java.io.File;
-import sortmix.common.SortingMode;
-import sortmix.exceptions.NonSortingModeException;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import sortmix.exceptions.ErrorReadingFileException;
 
 /**
  *
  * @author dariu
  */
 public class Model {
-    private String input;
-    private SortingMode sortingMode;
-    
-    public String getInput(){
-        return this.input;
+
+    private final String fileName;
+
+    public Model(String fileName) {
+        this.fileName = fileName;
     }
-    
-    public void setInput(String value){
-        this.input = value;
-    }
-    
-    public SortingMode getMode(){
-        return this.sortingMode;
-    }
-    
-    public void setMode(SortingMode mode)
-    {
-        this.sortingMode = mode;
-    }
-    
-    public void validate() throws FileNotFoundException, NonSortingModeException{
-        File f = new File(this.input);
-        if(!f.exists() || f.isDirectory()) { 
-            throw new FileNotFoundException();
+
+    public String getInputString() throws ErrorReadingFileException {
+
+        try {
+            FileReader fileReader = new FileReader(this.fileName);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+            String line;
+            String text = "";
+            while ((line = bufferedReader.readLine()) != null) {
+                text += line;
+            }
+            return text;
+        } catch (FileNotFoundException ex) {
+            throw new ErrorReadingFileException("Can't open file " + this.fileName + " " + ex.getMessage());
+        } catch (IOException ex) {
+            throw new ErrorReadingFileException("Can't read file " + this.fileName + " " + ex.getMessage());
         }
-        if (this.sortingMode == SortingMode.None)
-            throw new NonSortingModeException();
     }
 
+    public String getSortedString() throws ErrorReadingFileException {
+
+        String text = getInputString();
+       
+        return text;
+    }
+
+    public String getMixedString() throws ErrorReadingFileException{
+
+        String text = getInputString();
+       
+        return text;
+    }
 }
-
-

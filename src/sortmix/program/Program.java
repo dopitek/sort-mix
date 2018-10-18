@@ -6,12 +6,11 @@
 package sortmix.program;
 
 import sortmix.exceptions.NonSortingModeException;
-import sortmix.consoleInterface.ConsoleInput;
-import sortmix.consoleInterface.ConsoleOutput;
-import sortmix.model.IArrangable;
+import sortmix.consoleInterface.ConsoleUserInterface;
+import sortmix.common.IUserInterface;
+import sortmix.exceptions.ErrorReadingFileException;
+import sortmix.model.InputValues;
 import sortmix.model.Model;
-import sortmix.model.Mixer;
-import sortmix.model.Sorter;
 
 /**
  *
@@ -23,26 +22,31 @@ public class Program {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Model values = new ArgsParser().Parse(args);
-        
-        values = new ConsoleInput().GetInput(values);
-        
-        IArrangable arranger;        
-        switch(values.getMode())
-        {
-            case Sort:
-                arranger = new Sorter();
-                break;
-            case Mix:
-                arranger = new Mixer();
-                break;
-            default:
-                throw new NonSortingModeException(values.getMode().name());
+
+        InputValues inputValues = new ArgsParser().parse(args);
+
+        IUserInterface userInterface = new ConsoleUserInterface();
+
+        inputValues = userInterface.getInput(inputValues);
+
+        Model model = new Model(inputValues.getFileName());
+
+        String text;
+        try {
+            switch (inputValues.getSortingMode()) {
+                case Sort:
+                    text = model.getSortedString();
+                    break;
+                case Mix:
+                    text = model.getMixedString();
+                    break;
+                default:
+                    throw new NonSortingModeException("Sorting mode not supported: " + inputValues.getSortingMode().name());
+            }
+            userInterface.present(text);
+        } catch (ErrorReadingFileException | NonSortingModeException ex) {
+            userInterface.error(ex.getMessage());
         }
-        
-        String result = arranger.Arrange(values.getInput());
-        
-        new ConsoleOutput().Present(result);
+
     }
 }
-            

@@ -6,29 +6,30 @@
 package sortmix.program;
 
 import sortmix.common.SortingMode;
-import sortmix.model.Model;
+import sortmix.model.InputValues;
 
 /**
  *
  * @author dariu
  */
 public class ArgsParser {
-        public Model Parse(String[] args) {
-        Model values = new Model();
+        public InputValues parse(String[] args) {
+        InputValues values = new InputValues();
 
         for (int i = 0; i < args.length; i++) {
             switch (args[i]) {
                 case "-i":
                     if (args.length > i + 1) {
-                        values.setInput(args[i + 1]);
+                        values.setFileName(args[i + 1]);
                     }
                     break;
                 case "-s":
-                    values.setMode(SortingMode.Sort);
+                    values.setSortingMode(SortingMode.Sort);
                     break;
                 case "-m":
-                    values.setMode(SortingMode.Mix);
+                    values.setSortingMode(SortingMode.Mix);
                     break;
+                default: break;
             }
         }
 

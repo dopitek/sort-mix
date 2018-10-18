@@ -9,9 +9,9 @@ package sortmix.exceptions;
  *
  * @author Student
  */
-public class FileNotFoundException extends Exception {
+public class ErrorReadingFileException extends Exception {
 
-    public FileNotFoundException() {
+    public ErrorReadingFileException() {
     }
 
     /**
@@ -19,7 +19,7 @@ public class FileNotFoundException extends Exception {
      *
      * @param message display message
      */
-    public FileNotFoundException(String message) {
+    public ErrorReadingFileException(String message) {
         super(message);
     }
 }
