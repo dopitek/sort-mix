@@ -1,24 +1,21 @@
 package sortmix.program;
 
-import sortmix.exceptions.NonSortingModeException;
+import sortmix.model.NonSortingModeException;
 import sortmix.consoleInterface.ConsoleUserInterface;
-import sortmix.common.IUserInterface;
-import sortmix.exceptions.ErrorReadingFileException;
-import sortmix.model.FileReadModel;
 import sortmix.model.TextSorterModel;
 
 /**
- * Main class of the application which sorts or mixes content of given file.
+ * Main class of the application which sorts or mixes content of given text.
  * Result is presented to the user interface.
  *
  * @author Dariusz Opitek
- * @version 1.0
+ * @version 1.1
  */
 public class Program {
 
     /**
      * Main method of the application Arguments should contain following
-     * arguments: -i %filename% - for text file -s or -m - for sort or mix
+     * arguments: -t "text_to_be_analyzed" -s or -m - for sort or mix
      *
      * @param args command line arguments
      */
@@ -26,19 +23,16 @@ public class Program {
 
         InputData inputValues = new ArgsParser().parse(args);
 
-        IUserInterface userInterface = new ConsoleUserInterface();
+        ConsoleUserInterface userInterface = new ConsoleUserInterface();
 
-        inputValues = userInterface.getInput(inputValues);
+        inputValues = userInterface.fillMissingData(inputValues);
 
         try {
-            FileReadModel fileReadModel = new FileReadModel(inputValues.getFileName());
-            String text = fileReadModel.getText();
-
-            TextSorterModel textSorterModel = new TextSorterModel(text, inputValues.getSortingMode());
-            String sortedText = textSorterModel.getResultText();
+            TextSorterModel textSorterModel = new TextSorterModel(inputValues.getText(), inputValues.getSortingMode());
+            String sortedText = textSorterModel.process();
 
             userInterface.present(sortedText);
-        } catch (ErrorReadingFileException | NonSortingModeException ex) {
+        } catch (NonSortingModeException ex) {
             userInterface.error(ex.getMessage());
         }
 

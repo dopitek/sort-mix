@@ -6,31 +6,31 @@ import sortmix.common.SortingMode;
  * Class used to store input vales get from user
  *
  * @author Dariusz Opitek
- * @version 1.0
+ * @version 1.1
  */
 public class InputData {
 
     /**
-     * stores file name
+     * stores text
      */
-    private String fileName;
+    private String text;
 
     /**
-     * Sets file name
+     * Sets text
      *
-     * @param fileName name of file
+     * @param text text to be analysed
      */
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
+    public void setText(String text) {
+        this.text = text;
     }
 
     /**
-     * Gets file name
+     * Gets text
      *
-     * @return return name of file
+     * @return returns text
      */
-    public String getFileName() {
-        return this.fileName;
+    public String getText() {
+        return this.text;
     }
 
     /**

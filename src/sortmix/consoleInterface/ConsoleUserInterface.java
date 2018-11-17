@@ -1,7 +1,9 @@
 package sortmix.consoleInterface;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Locale;
-import sortmix.common.IUserInterface;
 import java.util.Scanner;
 import sortmix.common.SortingMode;
 import sortmix.program.InputData;
@@ -10,23 +12,33 @@ import sortmix.program.InputData;
  * Command line user interface
  *
  * @author Dariusz Opitek
- * @version 1.0
+ * @version 1.1
  */
-public class ConsoleUserInterface implements IUserInterface {
+public class ConsoleUserInterface {
 
-    @Override
-    public InputData getInput(InputData values) {
+    /**
+     * Gets data from the user interface to process data
+     *
+     * @param values actual data parsed from args array
+     * @return returns data get from user
+     */
+    public InputData fillMissingData(InputData values) {
 
         while (true) {
-            if (values.getFileName() != null
+            if (values.getText() != null
                     && values.getSortingMode() != null) {
                 break;
             }
 
-            if (values.getFileName() == null) {
-                Scanner scanner = new Scanner(System.in, "UTF-8");
-                System.out.print("Enter filename: ");
-                values.setFileName(scanner.next());
+            if (values.getText() == null) {
+                System.out.print("Enter text: ");
+                try {
+                    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+                    String s = br.readLine();
+                    values.setText(s);
+                } catch (IOException ex) {
+                    error(ex.getMessage());
+                }
             }
 
             if (values.getSortingMode() == null) {
@@ -44,12 +56,20 @@ public class ConsoleUserInterface implements IUserInterface {
         return values;
     }
 
-    @Override
+    /**
+     * Puts text to the user interface
+     *
+     * @param value text to be displayed
+     */
     public void present(String value) {
         System.out.println(value);
     }
 
-    @Override
+    /**
+     * Puts errors to the user interface
+     *
+     * @param value message to be displayed
+     */
     public void error(String value) {
         System.out.println("Error occured: " + value);
     }

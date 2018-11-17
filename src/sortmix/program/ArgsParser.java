@@ -6,7 +6,7 @@ import sortmix.common.SortingMode;
  * Class used to process values from command line args
  *
  * @author Dariusz Opitek
- * @version 1.0
+ * @version 1.1
  */
 public class ArgsParser {
 
@@ -21,9 +21,9 @@ public class ArgsParser {
 
         for (int i = 0; i < args.length; i++) {
             switch (args[i]) {
-                case "-i":
+                case "-t":
                     if (args.length > i + 1) {
-                        values.setFileName(args[i + 1]);
+                        values.setText(args[i + 1]);
                     }
                     break;
                 case "-s":

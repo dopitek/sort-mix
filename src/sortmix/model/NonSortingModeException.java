@@ -1,10 +1,10 @@
-package sortmix.exceptions;
+package sortmix.model;
 
 /**
  * Exception class which is thrown when no supported sorting mode is selected
  *
  * @author Dariusz Opitek
- * @version 1.0
+ * @version 1.1
  */
 public class NonSortingModeException extends Exception {
 
