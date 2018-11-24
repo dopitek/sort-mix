@@ -5,18 +5,18 @@ import java.io.IOException;
 import java.util.Properties;
 
 /**
- * Class used to process values from command line args
+ * Class used to parse values from settings file
  *
  * @author Dariusz Opitek
- * @version 1.1
+ * @version 1.2
  */
 public class SettingsParser {
 
     /**
      * Parse values from the command line args
      *
-     * @param args command line args
-     * @return return parsed input data
+     * @param propertiesFileName properties file name to be read
+     * @return return parsed Settings
      */
     public Settings parse(String propertiesFileName) {
         Properties properties = new Properties();

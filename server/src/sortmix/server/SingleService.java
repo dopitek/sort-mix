@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sortmix.server;
 
 import java.io.BufferedReader;
@@ -20,6 +15,8 @@ import sortmix.model.TextSorterModel;
 
 /**
  * The server class servicing a single connection
+ * @author Dariusz Opitek
+ * @version 1.2
  */
 class SingleService implements Closeable {
 
@@ -35,14 +32,17 @@ class SingleService implements Closeable {
      * Formatted output character stream
      */
     private PrintWriter output;
-
+    /**
+     * Model used to store and process input data
+     */
     private TextSorterModel model;
 
     /**
      * The constructor of instance of the SingleService class. Use the socket as
      * a parameter.
      *
-     * @param socket socket representing connection to the client
+     * @param socket socket representing connection to the client     
+     * @param model model used to store and process data
      */
     public SingleService(Socket socket, TextSorterModel model) throws IOException {
         this.socket = socket;
@@ -73,8 +73,6 @@ class SingleService implements Closeable {
 
                 String command = str.substring(0, 4);
                 String value = "";
-
-                System.out.println("*" + command + "*");
 
                 if (str.toUpperCase().equals("QUIT")) {
                     break;

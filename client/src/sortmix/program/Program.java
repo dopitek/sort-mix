@@ -7,17 +7,16 @@ import sortmix.consoleInterface.ConsoleUserInterface;
 import sortmix.settings.SettingsParseFailedException;
 
 /**
- * Main class of the application which sorts or mixes content of given text.
+ * Main class of the application which gets user input and sends to server.
  * Result is presented to the user interface.
  *
  * @author Dariusz Opitek
- * @version 1.1
+ * @version 1.2
  */
 public class Program {
 
     /**
-     * Main method of the application Arguments should contain following
-
+     * Main method of the application
      * @param args command line arguments
      */
     public static void main(String[] args) {
@@ -31,7 +30,7 @@ public class Program {
             String result = client.start(inputValues);
             userInterface.present("Result: "+ result);
         }catch(SettingsParseFailedException | IOException | BadRequestException ex){
-            userInterface.present(ex.getMessage());
+            userInterface.error(ex.getMessage());
         }
     }
 }

@@ -11,7 +11,7 @@ import sortmix.program.InputData;
  * Command line user interface
  *
  * @author Dariusz Opitek
- * @version 1.1
+ * @version 1.2
  */
 public class ConsoleUserInterface {
 

@@ -4,7 +4,7 @@ package sortmix.program;
  * Class used to store input vales get from user
  *
  * @author Dariusz Opitek
- * @version 1.1
+ * @version 1.2
  */
 public class InputData {
 

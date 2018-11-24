@@ -2,8 +2,6 @@ package sortmix.server;
 
 import java.net.*;
 import java.io.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import sortmix.model.TextSorterModel;
 import sortmix.settings.Settings;
 import sortmix.settings.SettingsParseFailedException;
@@ -12,7 +10,7 @@ import sortmix.settings.SettingsParser;
 /**
  * The main class of the server
  *
- * @author Gall Anonim
+ * @author Dariusz Opitek
  * @version 1.2
  */
 public class TCPServer implements Closeable {
@@ -27,14 +25,16 @@ public class TCPServer implements Closeable {
      */
     private ServerSocket serverSocket;
     
-    
-    private TextSorterModel model;
+    /**
+     * model for storing values and producing result
+     */
+    private final TextSorterModel model;
 
     /**
-     * Creates the server socket
+     * Creates the TCPServer
      *
      * @throws sortmix.settings.SettingsParseFailedException
-     * @throws IOException when prot is already bind
+     * @throws IOException when port is already bound
      */
     public TCPServer() throws SettingsParseFailedException, IOException {
         //this.port = port;
@@ -48,6 +48,9 @@ public class TCPServer implements Closeable {
         serverSocket = new ServerSocket(settings.getPort());
     }
 
+    /**
+     * starts listening on given port
+     */
     public void start() {
         try {
             System.out.println("Server started");

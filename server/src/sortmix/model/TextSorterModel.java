@@ -8,15 +8,12 @@ import sortmix.common.SortingMode;
  * Class for arranging text in specified mode
  *
  * @author Dariusz Opitek
- * @version 1.1
+ * @version 1.2
  */
 public class TextSorterModel {
 
     /**
      * stores text to be processed
-     */
-        /**
-     * stores text
      */
     private String text;
 
@@ -61,17 +58,15 @@ public class TextSorterModel {
         return this.sortingMode;
     }
 
-    private final SwapingList<Character> letters;
-
-    /**
-     * stores sorting mode to which should be used to process text
+     /**
+     * Stores container
+     *
      */
+    private final SwapingList<Character> letters;
 
     /**
      * Default constructor
      *
-     * @param text text to be sorted
-     * @param sortingMode sorting method
      */
     public TextSorterModel() {
         letters = new SwapingList<>();
@@ -113,6 +108,7 @@ public class TextSorterModel {
      * @return returns arranged text
      * @throws NonSortingModeException throws custom exception caught when
      * sorting mode not supported
+     * @throws sortmix.model.NoTextInputException
      */
     public String process() throws NonSortingModeException, NoTextInputException {
         String result = "";

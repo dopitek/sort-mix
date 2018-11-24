@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sortmix.client;
 
 import java.io.BufferedReader;
@@ -18,22 +13,33 @@ import sortmix.settings.SettingsParseFailedException;
 import sortmix.settings.SettingsParser;
 
 /**
+ * Class for handling communication with Server
  *
- * @author dariu
+ * @author Dariusz Opitek
+ * @version 1.2
  */
 public class TCPClient {
     
+    /**
+     * field represents the socket which connects to the server
+     */
     private Socket socket;
     
-        /**
+    /**
      * buffered input character stream
      */
     private BufferedReader input;
+    
     /**
-     * Formatted output character stream
+     * formatted output character stream
      */
     private PrintWriter output;
     
+    /**
+     * Default constructor
+     * @throws IOException
+     * @throws SettingsParseFailedException
+     */
     public TCPClient() throws IOException, SettingsParseFailedException{
         SettingsParser parser = new SettingsParser();
         Settings settings = parser.parse("settings.properties");
@@ -51,17 +57,30 @@ public class TCPClient {
                                 socket.getOutputStream())), true);
     }
     
+    /**
+     * Method which sends all values to the server and waits for answer
+     * @param values values to be sent
+     * @return returns final server answer
+     * @throws IOException
+     * @throws BadRequestException
+     */
     public String start(InputData values) throws IOException, BadRequestException{
         String answer = input.readLine();
-        System.out.println(answer);
         
-        SendMessage("TEXT " + values.getText());        
+        SendMessage("TEXT " + values.getText());   
         SendMessage("MODE " + values.getSortingMode());
         answer = SendMessage("CALC");
         SendMessage("QUIT");
         return answer;
     }
     
+    /**
+     * Method which sends single message to the server and waits for answer
+     * @param message message to be sent
+     * @return returns server answer
+     * @throws IOException
+     * @throws BadRequestException
+     */
     private String SendMessage(String message) throws IOException, BadRequestException
     {
         this.output.println(message);

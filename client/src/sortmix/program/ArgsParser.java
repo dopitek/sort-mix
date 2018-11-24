@@ -4,7 +4,7 @@ package sortmix.program;
  * Class used to process values from command line args
  *
  * @author Dariusz Opitek
- * @version 1.1
+ * @version 1.2
  */
 public class ArgsParser {
 

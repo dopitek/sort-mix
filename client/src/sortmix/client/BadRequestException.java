@@ -1,15 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sortmix.client;
 
 /**
+ * Exception class which is thrown when BadRequest comes from Server
  *
- * @author dariu
+ * @author Dariusz Opitek
+ * @version 1.2
  */
 public class BadRequestException extends Exception {
+    
+    /**
+     * Empty constructor
+     */
     public BadRequestException() {
     }
 

@@ -5,32 +5,25 @@ import java.io.IOException;
 import sortmix.server.TCPServer;
 
 /**
- * Main class of the application which sorts or mixes content of given text.
- * Result is presented to the user interface.
+ * Main class of the server which starts the TCPServer
  *
  * @author Dariusz Opitek
- * @version 1.1
+ * @version 1.2
  */
 public class Program {
 
     /**
-     * Main method of the application Arguments should contain following
-     * arguments: -t "text_to_be_analyzed" -s or -m - for sort or mix
+     * Main method of the application which starts the TCPServer
      *
-     * @param args command line arguments
+     * @param args command line arguments not used
      */
     public static void main(String[] args) {
 
         try {
             TCPServer server = new TCPServer();
             server.start();
-            //while (true);
-
         } catch (SettingsParseFailedException | IOException ex) {
-
+            System.out.println(ex.getMessage());
         }
-
-        
-
     }
 }
