@@ -24,3 +24,11 @@ hs_err_pid*
 nbproject/private
 /build/
 /dist/
+/client/build/
+/client/dist/
+/Sort&Mix_Common/nbproject/private/
+/Sort&Mix_Common/build/
+/Sort&Mix_Common/dist/
+/common/nbproject/private/
+/common/dist/
+/common/build/
