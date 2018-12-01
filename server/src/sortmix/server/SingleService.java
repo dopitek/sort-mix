@@ -92,9 +92,9 @@ class SingleService implements Closeable {
                         value = str.substring(5, str.length());
                         if (value.length() != 0) {
                             if (value.equals("m")) {
-                                model.setSortingMode(SortingMode.Mix);
+                                model.setSortingMode(SortingMode.MIX);
                             } else if (value.equals("s")) {
-                                model.setSortingMode(SortingMode.Sort);
+                                model.setSortingMode(SortingMode.SORT);
                             } else {
                                 output.println("400 Wrong sorting mode");
                                 break;

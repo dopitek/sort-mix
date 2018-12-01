@@ -77,7 +77,10 @@ public class SwapingList<T> implements Iterable<T> {
         contents.clear();
     }
     
-    
+    /**
+     * Iterator used for Swaping List
+     * @return returns iterator
+     */
     @Override
     public Iterator<T> iterator() {
         return new SwapIterator();

@@ -10,9 +10,9 @@ public enum SortingMode {
     /**
      * Sorting mode
      */
-    Sort,
+    SORT,
     /**
      * Mixing mode
      */
-    Mix
+    MIX
 }

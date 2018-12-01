@@ -128,10 +128,10 @@ public class TextSorterModel {
         }
 
         switch (sortingMode) {
-            case Sort:
+            case SORT:
                 sort();
                 break;
-            case Mix:
+            case MIX:
                 mix();
                 break;
             default:
