@@ -33,3 +33,9 @@ nbproject/private
 /common/dist/
 /common/build/
 server/dist/javadoc
+/servlets/nbproject/private/
+/servlets/servlets-war/nbproject/private/
+/servlets/servlets-ejb/nbproject/private/
+/Servlets/nbproject/private/
+/Servlets/build/
+/Servlets/dist/
