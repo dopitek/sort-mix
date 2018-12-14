@@ -1,29 +1,35 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sortmix.dao;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
- *
- * @author dariu
+ * Class used for handling basic read write database operations
+ * @author Dariusz Opitek
+ * @version 1.3
  */
 public class Repository {
 
+    /**
+     * stores connection to database
+     */
     private final Connection con;
 
+    /**
+     * Constructor to create repository
+     * @param connection connection to database
+     */
     public Repository(Connection connection) {
         this.con = connection;
     }
 
+    /**
+     * Method used to create main table
+     * @throws SQLException throws exception when create table fails
+     */
     public void createTable() throws SQLException {
         Statement statement = this.con.createStatement();
         // Tworzymy pola tabeli
@@ -32,10 +38,14 @@ public class Repository {
                 + "sortingMode VARCHAR(5), date VARCHAR(100))");
     }
 
+    /**
+     * Inserts data to database
+     * @param data data inserted to database
+     * @throws SQLException throws exception when insert data fails
+     */
     public void insertData(Data data) throws SQLException {
 
         Statement statement = this.con.createStatement();
-        // Wypełniamy wiersze tabeli Data
         statement.executeUpdate(String.format("INSERT INTO Data(inputText, resultText, sortingMode, date) VALUES ('%s', '%s', '%s', '%s')",
                 data.getInitText(),
                 data.getResultText(),
@@ -43,6 +53,11 @@ public class Repository {
                 data.getDate()));
     }
 
+    /**
+     * Selects data from database
+     * @return returns data from database
+     * @throws SQLException  throws exception when reading data fails
+     */
     public ArrayList<Data> selectData() throws SQLException {
         ArrayList<Data> list = new ArrayList<>();
         Statement statement = this.con.createStatement();

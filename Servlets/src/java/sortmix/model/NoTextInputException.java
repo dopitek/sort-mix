@@ -4,7 +4,7 @@ package sortmix.model;
  * Exception class which is thrown when no text is set
  *
  * @author Dariusz Opitek
- * @version 1.2
+ * @version 1.3
  */
 public class NoTextInputException extends Exception {
 

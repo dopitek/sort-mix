@@ -8,8 +8,8 @@ import java.util.NoSuchElementException;
  * Generic class for storing values and giving the ability to swap values
  *
  * @author Dariusz Opitek
- * @version 1.2
- * @param <T>
+ * @version 1.3
+ * @param <T> type in which swaping list should be build
  */
 public class SwapingList<T> implements Iterable<T> {
     
@@ -22,7 +22,7 @@ public class SwapingList<T> implements Iterable<T> {
      * Default constructor initialising container
      */
     public SwapingList(){
-        contents = new ArrayList<T>();
+        contents = new ArrayList<>();
     }
     
     /**

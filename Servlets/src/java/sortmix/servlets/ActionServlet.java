@@ -1,65 +1,36 @@
 package sortmix.servlets;
 
+import sortmix.common.CookieHandler;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Enumeration;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import sortmix.model.*;
 import sortmix.common.*;
 import sortmix.dao.Data;
-import sortmix.dao.DbContext;
-import sortmix.dao.Repository;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
- *
- * @author dariu
+ * Servlet used to calculate input data
+ * @author Dariusz Opitek
+ * @version 1.3
  */
 public class ActionServlet extends BaseServlet {
 
     /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param req servlet request
-     * @param resp servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * Model used to process text
      */
     private TextSorterModel model;
 
+    /**
+     * Creates TextSorterModel instance and calls base init method
+     * @throws ServletException throws exception when base init fails
+     */
     @Override
     public void init() throws ServletException {
         ServletConfig config = getServletConfig();
         ServletContext context = config.getServletContext();
-
-        Connection connection = (Connection) context.getAttribute("dbConnection");
-        if (connection == null) {
-            connection = new DbContext().connect();
-            context.setAttribute("dbConnection", connection);
-            repository = new Repository(connection);
-            try {
-                repository.createTable();
-            } catch (SQLException ex) {
-                System.err.println("SQL exception: " + ex.getMessage());
-            }
-        } else {
-            repository = new Repository(connection);
-        }
-        
-        super.init();
-        //ServletConfig config = getServletConfig();
-        //ServletContext context = config.getServletContext();
 
         model = (TextSorterModel) context.getAttribute("model");
         if (model == null)
@@ -67,6 +38,8 @@ public class ActionServlet extends BaseServlet {
             model = new TextSorterModel();
             context.setAttribute("model", model);
         }
+        
+        super.init();
     }
 
     /**

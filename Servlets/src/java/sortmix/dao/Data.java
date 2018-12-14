@@ -1,24 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sortmix.dao;
 
-import java.util.Date;
-import sortmix.common.SortingMode;
 /**
+ * Class for storing data inserted to and read from database
  *
- * @author dariu
+ * @author Dariusz Opitek
+ * @version 1.3
  */
 public class Data {
-        /**
-     * stores text to be processed
+
+    /**
+     * stores input text
      */
     private String initText;
 
     /**
-     * Sets text
+     * Sets input text
      *
      * @param text text to be analysed
      */
@@ -27,37 +23,37 @@ public class Data {
     }
 
     /**
-     * Gets text
+     * Gets input text
      *
-     * @return returns text
+     * @return returns input text
      */
     public String getInitText() {
         return this.initText;
     }
-    
-            /**
-     * stores text to be processed
+
+    /**
+     * stores result text
      */
     private String resultText;
 
     /**
-     * Sets text
+     * Sets result text
      *
-     * @param text text to be analysed
+     * @param text result text
      */
     public void setResultText(String text) {
         this.resultText = text;
     }
 
     /**
-     * Gets text
+     * Gets result text
      *
-     * @return returns text
+     * @return returns result text
      */
     public String getResultText() {
         return this.resultText;
     }
-    
+
     /**
      * stores selected sorting mode
      */
@@ -80,25 +76,25 @@ public class Data {
     public String getSortingMode() {
         return this.sortingMode;
     }
-    
-        /**
-     * stores selected sorting mode
+
+    /**
+     * stores date of calculation
      */
     private String date;
 
     /**
-     * Sets sorting mode
+     * Sets date of calculation
      *
-     * @param sortingMode sorting mode
+     * @param date sets date of calculation
      */
     public void setDate(String date) {
         this.date = date;
     }
 
     /**
-     * Gets sorting mode
+     * Gets date of calculation
      *
-     * @return returns sorting mode
+     * @return returns date of calculation
      */
     public String getDate() {
         return this.date;

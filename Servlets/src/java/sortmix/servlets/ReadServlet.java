@@ -1,31 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sortmix.servlets;
 
+import sortmix.common.CookieHandler;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import sortmix.dao.Data;
-import sortmix.model.NoTextInputException;
-import sortmix.model.NonSortingModeException;
-import sortmix.model.TextSorterModel;
 
 /**
- *
- * @author dariu
+ * Servlet used to show results from database
+ * @author Dariusz Opitek
+ * @version 1.3
  */
 public class ReadServlet extends BaseServlet {
 
+    /**
+     * Calls base init method
+     * @throws ServletException throws exception when base init fails
+     */
     @Override
     public void init() throws ServletException {
         super.init();

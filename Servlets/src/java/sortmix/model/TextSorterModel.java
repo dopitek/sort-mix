@@ -8,7 +8,7 @@ import sortmix.common.SortingMode;
  * Class for arranging text in specified mode
  *
  * @author Dariusz Opitek
- * @version 1.2
+ * @version 1.3
  */
 public class TextSorterModel {
 
@@ -108,7 +108,7 @@ public class TextSorterModel {
      * @return returns arranged text
      * @throws NonSortingModeException throws custom exception caught when
      * sorting mode not supported
-     * @throws sortmix.model.NoTextInputException
+     * @throws sortmix.model.NoTextInputException throws exception when no text provided
      */
     public String process() throws NonSortingModeException, NoTextInputException {
         String result = "";
